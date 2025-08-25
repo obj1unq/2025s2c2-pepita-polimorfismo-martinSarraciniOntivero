@@ -2,28 +2,30 @@ object pepita {
   var energy = 100
   var cena = 0
 
-  method energy() = energy
-
   method volar(minutes) {
     energy = energy - (minutes * 3)
     cena = 0
   }
+
   method descanso(){
     energy = energy + 10  
   }
+
   method comer(comida){
      energy = energy + comida.energyQueAporta()
   }
-  method energyDePepita(){
+
+  method energy() {
     return energy
   }
+
   method comiHoy(){
     cena = cena + 1
   }
 }
 object alpiste{ 
   method energyQueAporta(){
-    return 20
+    return 
     }
 }
 
@@ -41,14 +43,20 @@ object manzana{
 object pepon{
   var energy = 30
   var cena = 0
-  method energy() = 0
+
   method comer(alimento){
-    energy = energy + alimento.energyQueAporta()
+    energy = energy + (alimento.energyQueAporta() /2)
   }
+  
+  method energy() {
+    return energy
+  } //setter
+
   method volar(kilometros){
     energy = energy - (20 + kilometros * 2)
     cena = 0
   }
+
   method comiHoy(){
     cena = cena + 1
   }
@@ -56,10 +64,14 @@ object pepon{
 
 object roque{
   var ave = pepita
+
   method alimentar(alimento){
     ave.comer(alimento)
     ave.comiHoy()
   }
+
+
+
   method entrenar(kilometros){
     ave.volar(kilometros)
     }
