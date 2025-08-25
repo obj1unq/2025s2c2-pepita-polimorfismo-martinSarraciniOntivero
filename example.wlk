@@ -1,43 +1,78 @@
 object pepita {
-	var energia = 100
-	
-	method comer(comida) {
-		energia = energia + comida.energiaQueAporta()
-	}
-	
-	method volar(distancia) {
-		energia = energia - 10 - distancia
-	}
-	
-	method energia() {
-		return energia
-	}
+  var energy = 100
+  var cena = 0
+
+  method volar(minutes) {
+    energy = energy - (minutes * 3)
+    cena = 0
+  }
+
+  method descanso(){
+    energy = energy + 10  
+  }
+
+  method comer(comida){
+     energy = energy + comida.energyQueAporta()
+  }
+
+  method energy() {
+    return energy
+  }
+
+  method comiHoy(){
+    cena = cena + 1
+  }
+}
+object alpiste{ 
+  method energyQueAporta(){
+    return 
+    }
 }
 
-object alpiste {
-	method energiaQueAporta() {
-		return 20
-	}
+object manzana{
+  var madurez = 1
+  const energy = 5
+  method energyQueAporta(){
+    return energy * madurez
+    }
+  method madurar(){
+    madurez = madurez + self.energyQueAporta() * 0.1
+    }
 }
 
-object manzana {
-	var madurez = 1
-	const base = 5
-	
-	method madurez() {
-		return madurez
-	}
-	
-	method madurez(_madurez) {
-		madurez = _madurez
-	}
-	
-	method madurar() {
-		madurez = madurez + self.energiaQueAporta() * 0.1
-	}
-	
-	method energiaQueAporta() {
-		return base * madurez
-	}
-	
+object pepon{
+  var energy = 30
+  var cena = 0
+
+  method comer(alimento){
+    energy = energy + (alimento.energyQueAporta() /2)
+  }
+  
+  method energy() {
+    return energy
+  } //setter
+
+  method volar(kilometros){
+    energy = energy - (20 + kilometros * 2)
+    cena = 0
+  }
+
+  method comiHoy(){
+    cena = cena + 1
+  }
+}
+
+object roque{
+  var ave = pepita
+
+  method alimentar(alimento){
+    ave.comer(alimento)
+    ave.comiHoy()
+  }
+
+
+
+  method entrenar(kilometros){
+    ave.volar(kilometros)
+    }
 }
